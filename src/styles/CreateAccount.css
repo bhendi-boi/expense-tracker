@@ -1,0 +1,20 @@
+/* ----createaccount---- */
+
+.create-account {
+    background-color: beige;
+    height: calc(100vh - 50px);
+    width: 100vw;
+}
+
+.dark-create-acccount {
+    background-color: black;
+}
+
+.create-account form {
+    display: flex;
+    flex-direction: column;
+}
+
+.create-account form input {
+    margin-left: 50px;
+}
