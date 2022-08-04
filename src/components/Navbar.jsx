@@ -5,10 +5,13 @@ import "../styles/Navbar.css";
 
 const Navbar = () => {
   const isSignIn = false;
+  const darkMode = false;
 
-  // sigin prop
+  /*
+    ? sigiin prop and darkMode prop
+   */
   return (
-    <div className="navbar">
+    <div className={"navbar " + (darkMode ? "dark-navbar" : "")}>
       <div className="logo">
         <Link to="/">
           <h1>bhendi's</h1>
