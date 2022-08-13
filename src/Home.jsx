@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+
+// context
+import { DarkThemeContext } from "./context";
 import "./styles/Home.css";
 
 const Home = () => {
   // darkmode prop
-  const darkMode = false;
+  const [darkMode, setDarkTheme] = useContext(DarkThemeContext);
+
   return (
     <div className={"home" + (darkMode ? " dark-home" : "")}>
       <section>

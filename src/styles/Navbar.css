@@ -10,12 +10,13 @@
     overflow: hidden;
 }
 
-.navbar {
-    text-transform: uppercase;
+.navbar .logo {
+    text-transform: capitalize;
 }
 
 .navbar h1 {
     color: green;
+    font-size: 32px;
 }
 
 .navbar a {
@@ -32,4 +33,12 @@
     width: 30vw;
     justify-content: space-around;
     align-items: center;
+}
+
+.dark-navbar {
+    background-color: black;
+}
+
+.dark-navbar h1 {
+    color: white;
 }

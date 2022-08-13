@@ -8,22 +8,26 @@ import Signin from "./Signin";
 import History from "./History";
 import DashBoard from "./DashBoard";
 import CreateAccount from "./CreateAccount";
+
 // components
 import Navbar from "./components/Navbar";
-export const ThemeContext = createContext();
+import { DarkThemeProvider } from "./context";
 
 function App() {
   return (
     <BrowserRouter>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />}></Route>
-        <Route path="/:user" element={<DashBoard />}></Route>
-        <Route path="/signin" element={<Signin />}></Route>
-        <Route path="/history" element={<History />}></Route>
-        <Route path="/createaccount" element={<CreateAccount />}></Route>
-        <Route path="*" element={<Error />}></Route>
-      </Routes>
+      <DarkThemeProvider>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />}></Route>
+          <Route path="/user" element={<DashBoard />}></Route>
+          <Route path="/signin" element={<Signin />}></Route>
+          <Route path="/history" element={<History />}></Route>
+          <Route path="/createaccount" element={<CreateAccount />}></Route>
+          <Route path="/dashboard" element={<DashBoard />}></Route>
+          <Route path="*" element={<Error />}></Route>
+        </Routes>
+      </DarkThemeProvider>
     </BrowserRouter>
   );
 }

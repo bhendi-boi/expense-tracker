@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
+
+import "./styles/DashBoard.css";
 const DashBoard = () => {
-  const params = useParams();
+  // const params = useParams();
+  const darkMode = false;
   return (
-    <div>
+    <div className={"dashboard "(darkMode ? "dark-dashborad" : "")}>
       DashBoard
-      <h1>{params}</h1>
+      <h1>f</h1>
     </div>
   );
 };

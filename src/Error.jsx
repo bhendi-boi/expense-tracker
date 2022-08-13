@@ -1,7 +1,10 @@
 import React from "react";
 
 const Error = () => {
-  return <div>Error</div>;
+  const styles = {
+    color: "black",
+  };
+  return <div style={styles}>Error</div>;
 };
 
 export default Error;

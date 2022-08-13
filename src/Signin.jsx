@@ -1,13 +1,16 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+
+// context
+import { DarkThemeContext } from "./context";
 
 // css imports
 import "./styles/Signin.css";
 
 const Signin = () => {
   // post function
-  const darkMode = false;
-
+  const [darkMode, setDarkMode] = useContext(DarkThemeContext);
+  console.log(darkMode);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -24,7 +27,7 @@ const Signin = () => {
   };
 
   return (
-    <div className={"signin" + (darkMode ? "dark-sigiin" : "")}>
+    <div className={"signin " + (darkMode ? "dark-signin" : "")}>
       <form
         onSubmit={(e) => {
           console.log("submitted");
@@ -47,13 +50,13 @@ const Signin = () => {
         />
         <div className="submit-button">
           <p>
-            don't have an account ?<br /> click
+            don't have an account ? click
             <Link to="/createaccount">
-              <span> here </span>
+              <span>here</span>
             </Link>
             to create one
           </p>
-          <button>submit</button>
+          <button>signin</button>
         </div>
       </form>
     </div>

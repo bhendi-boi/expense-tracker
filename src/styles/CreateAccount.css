@@ -4,17 +4,59 @@
     background-color: beige;
     height: calc(100vh - 50px);
     width: 100vw;
+    position: absolute;
 }
 
-.dark-create-acccount {
-    background-color: black;
+.form-container {
+    position: relative;
+    top: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 0px;
 }
 
 .create-account form {
-    display: flex;
-    flex-direction: column;
+    height: 300px;
+    width: 400px;
+    display: grid;
+    grid-template-rows: repeat(5) 100px;
+    grid-template-columns: auto;
+    grid-gap: 10px;
+    border: 2px solid rgba(0, 0, 0, 0.75);
 }
 
 .create-account form input {
-    margin-left: 50px;
+    height: 35px;
+    width: 380px;
+    margin: 7.5px 7.5px 0px 7.5px;
+    padding: 5px;
+    border: 10px;
+}
+
+.create-account .sign-in {
+    height: 50px;
+    width: inherit;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: auto;
+    gap: 0px 20px;
+    padding: 10px;
+}
+
+.create-account .sign-in span {
+    margin: 5px;
+    text-decoration: underline;
+}
+
+.create-account .sign-in .submit-button {
+    width: 75px;
+    height: 30px;
+}
+
+
+/* ----dark themes---- */
+
+.dark-create-acccount {
+    background-color: black;
 }

@@ -1,4 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { Link } from "react-router-dom";
+
+// context
+import { DarkThemeContext } from "./context";
+// styles
 import "./styles/CreateAccount.css";
 
 const CreateAccount = () => {
@@ -7,7 +12,8 @@ const CreateAccount = () => {
   // 2 complete the confirm password and posting function
   // 3 darkMode
 
-  const darkMode = !false;
+  const { darkMode } = useContext(DarkThemeContext);
+
   const [user, setUser] = useState({
     firstname: "",
     lastname: "",
@@ -45,45 +51,58 @@ const CreateAccount = () => {
       className={"create-account " + (darkMode ? "dark-create-account" : "")}
     >
       <h1>welcome to bhendi's</h1>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          validatePasswords();
-          postRequest();
-        }}
-      >
-        <input
-          type="text"
-          name="firstname"
-          placeholder="firstname"
-          value={user.firstname}
-          required={true}
-          onChange={handleChange}
-        />
-        <input
-          type="text"
-          name="lastname"
-          placeholder="lastname"
-          value={user.lastname}
-          required={true}
-          onChange={handleChange}
-        />
-        <input
-          type="password"
-          name="password"
-          value={user.password}
-          placeholder="password"
-          onChange={handleChange}
-        />
-        <input
-          type="password"
-          name="confirmpassword"
-          value={confirmPassword}
-          placeholder="confirm password"
-          onChange={handleChange}
-        />
-        <input type="submit" text="submit" />
-      </form>
+      <div className="form-container">
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            validatePasswords();
+            postRequest();
+          }}
+        >
+          <input
+            type="text"
+            name="firstname"
+            placeholder="firstname"
+            value={user.firstname}
+            required={true}
+            onChange={handleChange}
+          />
+          <input
+            type="text"
+            name="lastname"
+            placeholder="lastname"
+            value={user.lastname}
+            required={true}
+            onChange={handleChange}
+          />
+          <input
+            type="password"
+            name="password"
+            value={user.password}
+            placeholder="password"
+            onChange={handleChange}
+          />
+          <input
+            type="password"
+            name="confirmpassword"
+            value={confirmPassword}
+            placeholder="confirm password"
+            onChange={handleChange}
+          />
+          <div className="sign-in">
+            <h4>
+              already a
+              <Link to="/signin">
+                <span>user</span>
+              </Link>
+              ?
+            </h4>
+            <button className="submit-button">
+              <h6>submit</h6>
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };
