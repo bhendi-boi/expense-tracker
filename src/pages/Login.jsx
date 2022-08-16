@@ -1,45 +1,58 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 // context
-import { DarkThemeContext } from "./context";
+import { DarkThemeContext } from "../context/DarkThemeContext";
+import { AuthContext } from "../context/AuthContext";
 
 // css imports
-import "./styles/Signin.css";
+import "../styles/Signin.css";
 
-const Signin = () => {
+const Login = () => {
   // post function
   const [darkMode, setDarkMode] = useContext(DarkThemeContext);
-  console.log(darkMode);
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+  // firebase
+  const { logIn } = useContext(AuthContext);
   const handleChange = (e) => {
-    if (e.target.name === "username") {
-      setUsername(e.target.value);
+    if (e.target.name === "email") {
+      setEmail(e.target.value);
     } else if (e.target.name === "password") {
       setPassword(e.target.value);
     }
   };
 
-  const post = () => {
-    return;
+  const post = async () => {
+    try {
+      setLoading(true);
+      const userResponse = await logIn(email, password);
+      console.log(userResponse);
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
+    setLoading(false);
   };
 
   return (
     <div className={"signin " + (darkMode ? "dark-signin" : "")}>
+      {/* <h4>Sign in to continue using this site</h4> */}
       <form
         onSubmit={(e) => {
           console.log("submitted");
+          post();
         }}
       >
         <input
-          name="username"
+          name="email"
           type="text"
-          placeholder="username"
+          placeholder="email"
           onChange={handleChange}
           required={true}
-          value={username}
+          value={email}
         />
         <input
           name="password"
@@ -56,11 +69,13 @@ const Signin = () => {
             </Link>
             to create one
           </p>
-          <button>signin</button>
+          <button disabled={loading} type="submit">
+            signin
+          </button>
         </div>
       </form>
     </div>
   );
 };
 
-export default Signin;
+export default Login;

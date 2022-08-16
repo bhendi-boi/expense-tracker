@@ -1,16 +1,9 @@
 /* ----homepage---- */
 
 .home {
-    background-color: cornflowerblue;
     height: 100vh;
     width: 100vw;
     color: black;
-    overflow: hidden;
-}
-
-.dark-home {
-    background-color: black;
-    color: white;
     overflow: hidden;
 }
 
@@ -21,5 +14,18 @@
 
 .home a {
     text-decoration: none;
+    overflow: hidden;
+}
+
+.home .signed-in .h1 {
+    color: black;
+}
+
+
+/* ----dark-mode---- */
+
+.dark-home {
+    background-color: #0a0908;
+    color: white;
     overflow: hidden;
 }

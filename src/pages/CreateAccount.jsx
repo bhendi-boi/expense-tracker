@@ -1,47 +1,63 @@
 import React, { useState, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
+// firebase
+import { createUserWithEmailAndPassword } from "firebase/auth";
 // context
-import { DarkThemeContext } from "./context";
+import { DarkThemeContext } from "../context/DarkThemeContext";
+import { AuthContext } from "../context/AuthContext";
+import { auth } from "../firebase/config";
 // styles
-import "./styles/CreateAccount.css";
+import "../styles/CreateAccount.css";
 
 const CreateAccount = () => {
   // todo list
   // 1 signin button
   // 2 complete the confirm password and posting function
   // 3 darkMode
-
   const { darkMode } = useContext(DarkThemeContext);
-
-  const [user, setUser] = useState({
-    firstname: "",
-    lastname: "",
-    sex: "",
+  const [inputUser, setinputUser] = useState({
+    email: "",
     password: "",
   });
   const [confirmPassword, setConfirmPassword] = useState("");
-
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+  // functions
   const validatePasswords = () => {
     // 1 special char , 1 number and 8 characters min
-    if (confirmPassword === user.password) {
-      console.log("first");
+    if (confirmPassword === inputUser.password) {
       return;
     }
 
     window.alert("passwords dont match");
-  };
-  const postRequest = async () => {
-    console.log("post request");
+    setinputUser({ ...inputUser, password: "" });
+    setConfirmPassword("");
   };
 
+  // authentication
+  const { logIn } = useContext(AuthContext);
+
+  const handleSignIn = async (inputUser) => {
+    setLoading(true);
+    try {
+      const response = await logIn(inputUser.email, inputUser.password);
+      console.log(`response  = ${response}`);
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
+
+    setLoading(false);
+  };
+
+  // event handlers
+
   const handleChange = (e) => {
-    if (e.target.name === "firstname") {
-      setUser({ ...user, firstname: `${e.target.value}` });
-    } else if (e.target.name === "lastname") {
-      setUser({ ...user, lastname: `${e.target.value}` });
+    if (e.target.name === "email") {
+      setinputUser({ ...inputUser, email: `${e.target.value}` });
     } else if (e.target.name === "password") {
-      setUser({ ...user, password: `${e.target.value}` });
+      setinputUser({ ...inputUser, password: `${e.target.value}` });
     } else if (e.target.name === "confirmpassword") {
       setConfirmPassword(e.target.value);
     }
@@ -56,29 +72,22 @@ const CreateAccount = () => {
           onSubmit={(e) => {
             e.preventDefault();
             validatePasswords();
-            postRequest();
+            handleSignIn(inputUser);
           }}
         >
           <input
-            type="text"
-            name="firstname"
-            placeholder="firstname"
-            value={user.firstname}
+            type="email"
+            name="email"
+            placeholder="email"
+            value={inputUser.email}
             required={true}
             onChange={handleChange}
           />
-          <input
-            type="text"
-            name="lastname"
-            placeholder="lastname"
-            value={user.lastname}
-            required={true}
-            onChange={handleChange}
-          />
+
           <input
             type="password"
             name="password"
-            value={user.password}
+            value={inputUser.password}
             placeholder="password"
             onChange={handleChange}
           />
@@ -97,7 +106,7 @@ const CreateAccount = () => {
               </Link>
               ?
             </h4>
-            <button className="submit-button">
+            <button disabled={loading} className="submit-button">
               <h6>submit</h6>
             </button>
           </div>

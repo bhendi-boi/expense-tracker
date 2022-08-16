@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 
-import "./styles/DashBoard.css";
+import "../styles/DashBoard.css";
 const DashBoard = () => {
   // const params = useParams();
   const darkMode = false;

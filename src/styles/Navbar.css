@@ -6,7 +6,6 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background-color: white;
     overflow: hidden;
 }
 
@@ -14,7 +13,7 @@
     text-transform: capitalize;
 }
 
-.navbar h1 {
+.navbar .logo h1 {
     color: green;
     font-size: 32px;
 }
@@ -35,10 +34,32 @@
     align-items: center;
 }
 
+
+/* ----dark-mode---- */
+
 .dark-navbar {
-    background-color: black;
+    background-color: #0a0908;
 }
 
-.dark-navbar h1 {
+.dark-navbar>* {
+    background-color: #0a0908;
+}
+
+.dark-navbar .logo h1 {
+    background-color: #0a0908;
+    color: white;
+}
+
+.dark-navbar .links {
+    background-color: #0a0908;
+}
+
+.dark-navbar .links h3 {
+    background-color: #0a0908;
+    color: #fcfcff;
+}
+
+.dark-navbar .links .dark {
+    background-color: #0a0908;
     color: white;
 }

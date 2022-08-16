@@ -1,35 +1,47 @@
-import React, { useState, createContext } from "react";
+import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 // pages
-import Home from "./Home";
-import Error from "./Error";
-import Signin from "./Signin";
-import History from "./History";
-import DashBoard from "./DashBoard";
-import CreateAccount from "./CreateAccount";
+import Home from "./pages/Home";
+import Error from "./pages/Error";
+import Login from "./pages/Login";
+import Profile from "./pages/Profile";
+import DashBoard from "./pages/DashBoard";
+import CreateAccount from "./pages/CreateAccount";
 
 // components
 import Navbar from "./components/Navbar";
-import { DarkThemeProvider } from "./context";
+import ProtectedRoute from "./components/ProtectedRoute";
 
-function App() {
+// context
+import { DarkThemeProvider } from "./context/DarkThemeContext";
+import { AuthProvider } from "./context/AuthContext";
+
+const App = () => {
   return (
     <BrowserRouter>
       <DarkThemeProvider>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />}></Route>
-          <Route path="/user" element={<DashBoard />}></Route>
-          <Route path="/signin" element={<Signin />}></Route>
-          <Route path="/history" element={<History />}></Route>
-          <Route path="/createaccount" element={<CreateAccount />}></Route>
-          <Route path="/dashboard" element={<DashBoard />}></Route>
-          <Route path="*" element={<Error />}></Route>
-        </Routes>
+        <AuthProvider>
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Home />}></Route>
+            <Route path="/login" element={<Login />}></Route>
+            <Route path="/profile" element={<Profile />}></Route>
+            <Route path="/signup" element={<CreateAccount />}></Route>
+            <Route
+              path="/dashboard"
+              element={
+                <ProtectedRoute>
+                  <DashBoard />
+                </ProtectedRoute>
+              }
+            ></Route>
+            <Route path="*" element={<Error />}></Route>
+          </Routes>
+        </AuthProvider>
       </DarkThemeProvider>
     </BrowserRouter>
   );
-}
+};
 
 export default App;

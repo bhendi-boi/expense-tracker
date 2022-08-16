@@ -1,22 +1,42 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
-import { MdOutlineDarkMode, MdDarkMode } from "react-icons/md";
+import { Link, useNavigate } from "react-router-dom";
+import { MdOutlineDarkMode, MdOutlineLightMode } from "react-icons/md";
 
 // context
-import { DarkThemeContext } from "../context";
+import { DarkThemeContext } from "../context/DarkThemeContext";
+import { AuthContext } from "../context/AuthContext";
+
+// styles
 import "../styles/Navbar.css";
 
 const Navbar = () => {
-  const [isSignIn, setSignin] = useState(false);
-  const [darkMode, setDarkMode] = useContext(DarkThemeContext);
-  const handleThemeChange = (e) => {
-    setDarkMode((prev) => !prev);
-    console.log("f");
+  // variables
+
+  const [error, setError] = useState("");
+
+  // context
+  const { darkMode, changeTheme } = useContext(DarkThemeContext);
+  const { logOut, currentUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  // functions
+  const handleSignIn = () => {
+    navigate("/login");
   };
-  const handleSignin = () => {};
+
+  const handleSignOut = async () => {
+    try {
+      await logOut();
+      navigate("/login");
+    } catch (err) {
+      console.log(err);
+      setError("failed to logout");
+    }
+  };
   /*
     ? sigiin prop and darkMode prop
    */
+
   return (
     <div className={"navbar " + (darkMode ? "dark-navbar" : "")}>
       <div className="logo">
@@ -25,24 +45,31 @@ const Navbar = () => {
         </Link>
       </div>
       <div className="links">
-        {!darkMode ? (
-          <MdOutlineDarkMode name="dark" onClick={handleThemeChange} />
+        {darkMode ? (
+          <MdOutlineDarkMode className="dark" onClick={changeTheme} />
         ) : (
-          <MdDarkMode name="light" onClick={handleThemeChange} />
+          <MdOutlineLightMode className="light" onClick={changeTheme} />
         )}
-        {isSignIn ? (
+
+        {currentUser ? (
           <>
             <Link to="/">
               <h3>Home</h3>
             </Link>
-            <Link to="/history">
-              <h3>History</h3>
+            <Link to="/profile">
+              <h3>Profile</h3>
             </Link>
           </>
         ) : null}
-        <button onClick={handleSignin}>
-          <h3>{isSignIn ? "sign out" : "sign in"}</h3>
-        </button>
+        {currentUser ? (
+          <button onClick={handleSignOut}>
+            <h3>sign out</h3>
+          </button>
+        ) : (
+          <button onClick={handleSignIn}>
+            <h3>sign in</h3>
+          </button>
+        )}
       </div>
     </div>
   );
