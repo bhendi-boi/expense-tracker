@@ -1,0 +1,40 @@
+.profile {
+    height: calc(100vh);
+    width: 100vw;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+}
+
+.profile .activity {
+    background-color: aquamarine;
+}
+
+.profile .edit-profile {
+    background-color: beige;
+}
+
+.profile .edit-profile .image-upload {
+    height: 150px;
+}
+
+.profile .edit-profile h3 {
+    color: blue;
+    margin-left: 20px;
+}
+
+.profile .edit-profile form {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile .edit-profile label {
+    margin: 10px;
+}
+
+.profile .edit-profile input {
+    margin-left: 10px;
+    width: 300px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid black;
+}

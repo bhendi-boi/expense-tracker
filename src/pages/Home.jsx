@@ -15,20 +15,23 @@ const Home = () => {
     <div className={"home" + (darkMode ? " dark-home" : "")}>
       {!currentUser ? (
         <section className="not-signed-in">
-          <h2>
-            <Link to="/login">
-              <span>login </span>
+          <h1>You are currently not logged in!!</h1>
+
+          <h3>
+            <Link to="/login">login</Link> or
+            <Link to="/signup" className="signup">
+              signup
             </Link>
-            or
-            <Link to="/createaccount">
-              <span> signup </span>
-            </Link>
-            to access the site
-          </h2>
+            to start using this site
+          </h3>
         </section>
       ) : (
         <section className="signed-in">
-          <h1>{currentUser && currentUser.email}</h1>
+          <h1>Welcome back, {currentUser && currentUser.email}</h1>
+          <p>
+            as of now the profile page and dashboard page dont work properly.
+            Have to add the functionality
+          </p>
         </section>
       )}
     </div>

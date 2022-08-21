@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { MdOutlineDarkMode, MdOutlineLightMode } from "react-icons/md";
 
 // context
@@ -7,6 +7,7 @@ import { DarkThemeContext } from "../context/DarkThemeContext";
 import { AuthContext } from "../context/AuthContext";
 
 // styles
+import { motion } from "framer-motion";
 import "../styles/Navbar.css";
 
 const Navbar = () => {
@@ -16,7 +17,8 @@ const Navbar = () => {
 
   // context
   const { darkMode, changeTheme } = useContext(DarkThemeContext);
-  const { logOut, currentUser } = useContext(AuthContext);
+  const { logOut } = useContext(AuthContext);
+  const currentUser = true;
   const navigate = useNavigate();
 
   // functions
@@ -38,11 +40,11 @@ const Navbar = () => {
    */
 
   return (
-    <div className={"navbar " + (darkMode ? "dark-navbar" : "")}>
+    <nav className={"navbar " + (darkMode ? "dark-navbar" : "")}>
       <div className="logo">
-        <Link to="/">
+        <NavLink to="/">
           <h1>bhendi's</h1>
-        </Link>
+        </NavLink>
       </div>
       <div className="links">
         {darkMode ? (
@@ -53,25 +55,25 @@ const Navbar = () => {
 
         {currentUser ? (
           <>
-            <Link to="/">
-              <h3>Home</h3>
-            </Link>
-            <Link to="/profile">
-              <h3>Profile</h3>
-            </Link>
+            <NavLink className="link" to="/">
+              Home
+            </NavLink>
+            <NavLink className="link" to="/profile">
+              Profile
+            </NavLink>
           </>
         ) : null}
         {currentUser ? (
           <button onClick={handleSignOut}>
-            <h3>sign out</h3>
+            <h3>Sign out</h3>
           </button>
         ) : (
           <button onClick={handleSignIn}>
-            <h3>sign in</h3>
+            <h3>Sign in</h3>
           </button>
         )}
       </div>
-    </div>
+    </nav>
   );
 };
 

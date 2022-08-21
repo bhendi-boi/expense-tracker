@@ -1,24 +1,44 @@
 /* ----homepage---- */
 
 .home {
-    height: 100vh;
+    height: calc(100vh - 50px);
     width: 100vw;
     color: black;
     overflow: hidden;
 }
 
-.home h2 span {
-    color: yellow;
-    overflow: hidden;
+.home .not-signed-in h1 {
+    font-size: 1.5rem;
+    margin-left: 1rem;
 }
 
-.home a {
+.home .not-signed-in h3 {
+    font-size: 1rem;
+    margin-left: 1rem;
+}
+
+.home .not-signed-in h3 a {
+    font-size: 1.2rem;
+    color: #1d3557;
+    background-color: #fbfcfa;
     text-decoration: none;
-    overflow: hidden;
 }
 
-.home .signed-in .h1 {
-    color: black;
+.home .not-signed-in h3 a:hover {
+    text-decoration: underline;
+}
+
+.home .signup {
+    margin: 0px 3px;
+}
+
+.home .signed-in h1 {
+    font-size: 1.5rem;
+    margin-left: 1rem;
+}
+
+.home .signed-in p {
+    margin-left: 1rem;
 }
 
 
@@ -28,4 +48,30 @@
     background-color: #0a0908;
     color: white;
     overflow: hidden;
+}
+
+.dark-home .not-signed-in {
+    background-color: #0a0908;
+}
+
+.dark-home .not-signed-in>* {
+    background-color: #0a0908;
+}
+
+.dark-home .not-signed-in h3 a {
+    background-color: #0a0908;
+    color: rgba(0, 0, 255, 0.677);
+}
+
+.dark-home .signed-in {
+    background-color: #000814;
+    color: #fbfcfa;
+}
+
+.dark-home .signed-in h1 {
+    background-color: #000814;
+}
+
+.dark-home .signed-in p {
+    background-color: #000814;
 }

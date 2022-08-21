@@ -1,0 +1,40 @@
+/* ---error-page---- */
+
+.error {
+    height: 100vh;
+    width: 100vw;
+}
+
+.error h3 {
+    font-size: 2rem;
+}
+
+
+/* ----dark-mode---- */
+
+.dark-error {
+    background-color: #0a0908;
+}
+
+.dark-error>* {
+    background-color: #0a0908;
+    color: #fbfcff;
+}
+
+.dark-error .dark-main-content {
+    height: 100vh;
+    background-color: #0a0908;
+    color: #fbfcff;
+}
+
+.dark-error .dark-main-content h3 {
+    background-color: #0a0908;
+}
+
+.dark-error .dark-main-content a {
+    background-color: #0a0908;
+}
+
+.dark-error a {
+    color: rgba(200, 203, 204, 0.9);
+}

@@ -1,0 +1,33 @@
+/* ----footer---- */
+
+.footer {
+    background-color: black;
+    color: white;
+    height: 30px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer>* {
+    background-color: black;
+    margin: 2px;
+    padding: 2px;
+}
+
+.footer p {
+    margin-right: 5px;
+}
+
+.footer a {
+    text-decoration: underline;
+    background-color: black;
+    color: #f2f3f4;
+    margin: 4px;
+}
+
+.dark-footer h3 p {
+    background-color: rgba(214, 214, 214, 0.832) s;
+}
