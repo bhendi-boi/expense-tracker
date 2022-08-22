@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 // context
 import { AuthContext } from "../context/AuthContext";
 import { DarkThemeContext } from "../context/DarkThemeContext";
+
+// styles
+// import "../styles/test.css";
 import "../styles/Home.css";
 
 const Home = () => {
