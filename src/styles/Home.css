@@ -1,6 +1,12 @@
 /* ----homepage---- */
 
 .home {
+    --light-color: #f3f4f5;
+    --dark-color: #222;
+    --dark-background-color: #0a0809;
+}
+
+.home {
     height: calc(100vh - 50px);
     width: 100vw;
     color: black;
@@ -45,33 +51,33 @@
 /* ----dark-mode---- */
 
 .dark-home {
-    background-color: #0a0908;
+    background-color: var(--dark-background-color);
     color: white;
     overflow: hidden;
 }
 
 .dark-home .not-signed-in {
-    background-color: #0a0908;
+    background-color: var(--dark-background-color);
 }
 
 .dark-home .not-signed-in>* {
-    background-color: #0a0908;
+    background-color: var(--dark-background-color);
 }
 
 .dark-home .not-signed-in h3 a {
-    background-color: #0a0908;
+    background-color: var(--dark-background-color);
     color: rgba(0, 0, 255, 0.677);
 }
 
 .dark-home .signed-in {
-    background-color: #000814;
+    background-color: var(--dark-background-color);
     color: #fbfcfa;
 }
 
 .dark-home .signed-in h1 {
-    background-color: #000814;
+    background-color: var(--dark-background-color);
 }
 
 .dark-home .signed-in p {
-    background-color: #000814;
+    background-color: var(--dark-background-color);
 }

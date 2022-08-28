@@ -1,40 +1,20 @@
+/* profile */
+
 .profile {
-    height: calc(100vh);
+    --light-color: #black;
+    --dark-color: #f3f3f4;
+    --dark-background-color: #0a0809;
+    --activity-color: #
+}
+
+.profile {
+    height: 100vh;
     width: 100vw;
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 3fr 1fr;
 }
 
-.profile .activity {
-    background-color: aquamarine;
-}
+.profile .activity{
+    background-color: var(--dark-background-color);
 
-.profile .edit-profile {
-    background-color: beige;
-}
-
-.profile .edit-profile .image-upload {
-    height: 150px;
-}
-
-.profile .edit-profile h3 {
-    color: blue;
-    margin-left: 20px;
-}
-
-.profile .edit-profile form {
-    display: flex;
-    flex-direction: column;
-}
-
-.profile .edit-profile label {
-    margin: 10px;
-}
-
-.profile .edit-profile input {
-    margin-left: 10px;
-    width: 300px;
-    padding: 10px;
-    border-radius: 10px;
-    border: 2px solid black;
 }

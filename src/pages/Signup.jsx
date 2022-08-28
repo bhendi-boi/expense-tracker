@@ -61,14 +61,14 @@ const Signup = () => {
     setLoading(true);
     try {
       const authResponse = await signUp(inputUser.email, inputUser.password);
-      // const docResponse = await setDoc(
-      //   doc(db, "users", authResponse.user.uid),
-      //   {
-      //     name: `${inputUser.email}`,
-      //     createdAt: serverTimestamp(),
-      //   }
-      // );
-      // console.log(docResponse);
+      const docResponse = await setDoc(
+        doc(db, "users", authResponse.user.uid),
+        {
+          name: `${inputUser.email}`,
+          createdAt: serverTimestamp(),
+        }
+      );
+      console.log(docResponse);
       console.log(authResponse);
       navigate("/");
     } catch (error) {
@@ -90,7 +90,10 @@ const Signup = () => {
   };
 
   return (
-    <div
+    <motion.div
+      initial={{ width: 0 }}
+      animate={{ width: "100vw" }}
+      exit={{ x: window.innerWidth, transistion: { duration: 0.2 } }}
       className={"create-account " + (darkMode ? "dark-create-account" : "")}
     >
       <h1>
@@ -143,19 +146,15 @@ const Signup = () => {
               </Link>
               ?
             </h4>
-            <motion.button
-              disabled={loading}
-              type="submit"
-              className="submit-button"
-              whileTap={{ scale: 1.1 }}
-              whileHover={{ scale: 0.9 }}
-            >
-              <p>Submit</p>
-            </motion.button>
+            <button disabled={loading} type="submit" className="submit-button">
+              <motion.p whileTap={{ scale: 1.1 }} whileHover={{ scale: 0.9 }}>
+                Submit
+              </motion.p>
+            </button>
           </div>
         </form>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

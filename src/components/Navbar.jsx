@@ -11,14 +11,9 @@ import { motion } from "framer-motion";
 import "../styles/Navbar.css";
 
 const Navbar = () => {
-  // variables
-
-  const [error, setError] = useState("");
-
   // context
   const { darkMode, changeTheme } = useContext(DarkThemeContext);
-  const { logOut } = useContext(AuthContext);
-  const currentUser = true;
+  const { logOut, currentUser } = useContext(AuthContext);
   const navigate = useNavigate();
 
   // functions
@@ -32,12 +27,8 @@ const Navbar = () => {
       navigate("/login");
     } catch (err) {
       console.log(err);
-      setError("failed to logout");
     }
   };
-  /*
-    ? sigiin prop and darkMode prop
-   */
 
   return (
     <nav className={"navbar " + (darkMode ? "dark-navbar" : "")}>
@@ -48,9 +39,15 @@ const Navbar = () => {
       </div>
       <div className="links">
         {darkMode ? (
-          <MdOutlineDarkMode className="dark" onClick={changeTheme} />
+          <MdOutlineDarkMode
+            className="dark theme-button"
+            onClick={changeTheme}
+          />
         ) : (
-          <MdOutlineLightMode className="light" onClick={changeTheme} />
+          <MdOutlineLightMode
+            className="light theme-button"
+            onClick={changeTheme}
+          />
         )}
 
         {currentUser ? (
@@ -64,12 +61,18 @@ const Navbar = () => {
           </>
         ) : null}
         {currentUser ? (
-          <button onClick={handleSignOut}>
-            <h3>Sign out</h3>
-          </button>
+          <motion.button
+            whileTap={{ scale: 0.96 }}
+            whileHover={{ scale: 1.025 }}
+            onClick={handleSignOut}
+          >
+            <p>Logout</p>
+          </motion.button>
         ) : (
           <button onClick={handleSignIn}>
-            <h3>Sign in</h3>
+            <motion.p whileTap={{ scale: 0.96 }} whileHover={{ scale: 1.025 }}>
+              Sign in
+            </motion.p>
           </button>
         )}
       </div>

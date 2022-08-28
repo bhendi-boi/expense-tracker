@@ -2,36 +2,43 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@700&display=swap");
 .navbar {
+    --light-color: #1d3551;
+    --dark-color: #f3f3f3;
+    --light-background-color: #d6d6d6;
+    --dark-background-color: #202020;
+}
+
+.navbar {
     height: 50px;
     width: 100vw;
     display: flex;
     justify-content: space-around;
     align-items: center;
     overflow: hidden;
-    background-color: #d6d6d6;
+    background-color: var(--light-background-color);
 }
 
 .navbar .logo {
     text-transform: capitalize;
-    background-color: #d6d6d6;
+    background-color: var(--light-background-color);
 }
 
 .navbar .logo h1 {
     color: green;
     font-family: "Yeseva One", sans-serif;
     font-size: 32px;
-    background-color: #d6d6d6;
+    background-color: var(--light-background-color);
 }
 
 .navbar a {
     text-decoration: none;
-    background-color: #d6d6d6;
+    background-color: var(--light-background-color);
 }
 
 .navbar .logo {
     width: 70vw;
     padding-left: 20px;
-    background-color: #d6d6d6;
+    background-color: var(--light-background-color);
 }
 
 .navbar .links {
@@ -39,15 +46,19 @@
     width: 30vw;
     justify-content: space-around;
     align-items: center;
-    background-color: #d6d6d6;
+    background-color: var(--light-background-color);
 }
 
 .navbar .links .link {
-    background-color: #d6d6d6;
+    background-color: var(--light-background-color);
     font-size: 1rem;
-    color: #1d3557;
+    color: var(--light-color);
     font-weight: 500;
     cursor: pointer;
+}
+
+.navbar .links .link:hover {
+    font-size: 1.05rem;
 }
 
 .navbar .links a.active {
@@ -65,55 +76,72 @@
 
 .navbar .links button {
     border-radius: 2px;
-    background-color: #d6d6d6;
+    background-color: var(--light-background-color);
 }
 
 .navbar .light {
-    background-color: #d6d6d6;
+    background-color: var(--light-background-color);
+}
+
+.navbar .theme-button {
+    cursor: pointer;
+}
+
+.navbar .links button {
+    border-radius: 0.5rem;
+    border: 2px solid rgba(28, 40, 212, 1);
+    cursor: pointer;
+}
+
+.navbar .links button p {
+    font-family: "Roboto", sans-serif;
+    padding: 0.3rem;
+    font-weight: 500;
+    background-color: rgba(28, 40, 212, 0.9);
+    color: var(--dark-color);
 }
 
 
 /* ----dark-mode---- */
 
 .dark-navbar {
-    background-color: #202020;
+    background-color: var(--dark-background-color);
 }
 
 .dark-navbar .logo {
-    background-color: #202020;
+    background-color: var(--dark-background-color);
 }
 
 .dark-navbar .logo h1 {
-    background-color: #202020;
+    background-color: var(--dark-background-color);
     color: white;
 }
 
 .dark-navbar .links {
-    background-color: #202020;
+    background-color: var(--dark-background-color);
 }
 
 .dark-navbar .links .link {
-    background-color: #202020;
+    background-color: var(--dark-background-color);
     color: #fcfcff;
 }
 
 .dark-navbar .links h3 {
-    background-color: #202020;
+    background-color: var(--dark-background-color);
     color: #fcfcff;
 }
 
 .dark-navbar .links .dark {
-    background-color: #202020;
+    background-color: var(--dark-background-color);
     color: white;
 }
 
 .dark-navbar .links button {
-    border-radius: 0.5rem;
-    cursor: pointer;
-    border: 2px solid #f2f3f4;
+    border: 1.5px solid #f2f3f4;
+    background-color: var(--dark-background-color);
 }
 
-.dark-navbar .links h3 {
-    font-family: "Roboto", sans-serif;
-    padding: 0.2rem;
+.dark-navbar .links button p {
+    background-color: var(--dark-background-color);
+    color: var(--dark-color);
 }

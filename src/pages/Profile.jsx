@@ -1,87 +1,42 @@
 import React, { useContext, useState } from "react";
+import EditProfile from "../components/EditProfile";
 
 // context
 import { DarkThemeContext } from "../context/DarkThemeContext";
 
-// firebase
-import { auth, db, storage } from "../firebase/config";
-import { addDoc, collection, doc, serverTimestamp } from "firebase/firestore";
-import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 // styles
 import "../styles/Profile.css";
+import { motion } from "framer-motion";
 
-// component
 const Profile = () => {
   const { darkMode } = useContext(DarkThemeContext);
-  const [file, setFile] = useState("");
-  const [newData, setNewData] = useState({
-    name: "",
-    password: "",
-    country: "",
-  });
-  const [confirmPassword, setConfirmPassword] = useState("");
 
-  // event handlers
-  const handleChange = (e) => {
-    if (e.target.id === "username") {
-      setNewData({ ...newData, username: `${e.target.value}` });
-    } else if (e.target.id === "password") {
-      setNewData({ ...newData, password: `${e.target.value}` });
-    } else if (e.target.id === "confirmPassword") {
-      if (newData.password !== "") {
-        setConfirmPassword(e.target.value);
-      } else {
-        window.alert("enter password first");
-      }
-    }
-  };
-
-  const handleSubmit = async (e) => {
-    console.log("submitted");
-    e.preventDefalut();
-    const response = await addDoc(collection(db, "users"), {
-      name: `${newData.name}`,
-      country: "India",
-      lastUpdatedAt: serverTimestamp(),
-    });
+  const userData = {
+    name: "sjk",
+    country: "India",
   };
 
   return (
-    <div className={"profile " + (darkMode ? "dark-profile" : "")}>
+    <motion.div
+      initial={{ width: 0 }}
+      animate={{ width: "100vw" }}
+      exit={{ x: "100vw", transistion: { duration: 0.2 } }}
+      className={"profile " + (darkMode ? "dark-profile" : "")}
+    >
       <div className="activity"></div>
-      <div className="edit-profile">
-        <div className="image-upload">
-          <input type="url" placeholder="image-upload" />
+      <div className="display">
+        <div className="profile-image">
+          <i src="" alt="profile-pic" />
         </div>
-        <h3>Edit profile</h3>
-        <form onSubmit={(e) => handleSubmit(e)}>
-          <label htmlFor="username">Username</label>
-          <input
-            onChange={handleChange}
-            id="username"
-            type="text"
-            placeholder="username"
-            value={newData.name}
-          />
-          <label htmlFor="password">Change password</label>
-          <input
-            onChange={handleChange}
-            id="password"
-            type="password"
-            placeholder="password"
-            value={newData.password}
-          />
-          <label htmlFor="confirmPassword">Confirm password</label>
-          <input
-            onChange={handleChange}
-            id="confirmPassword"
-            type="password"
-            placeholder="confirm password"
-            value={confirmPassword}
-          />
-        </form>
+        <div className="details">
+          <h3>Edit profile ?</h3>
+          <label>Name</label>
+          <h3>{userData.name}</h3>
+          <label htmlFor="country">Country</label>
+          <h3>{userData.country}</h3>
+        </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

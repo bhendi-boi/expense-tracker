@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 // context
@@ -26,6 +26,12 @@ const Login = () => {
     }
   };
 
+  useEffect(() => {
+    if (!(currentUser === null)) {
+      navigate("/");
+    }
+  }, [currentUser]);
+
   const post = async () => {
     try {
       setLoading(true);
@@ -40,7 +46,12 @@ const Login = () => {
   console.log(currentUser);
 
   return (
-    <div className={"signin " + (darkMode ? "dark-signin" : "")}>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 1 }}
+      className={"signin " + (darkMode ? "dark-signin" : "")}
+    >
       {/* <h4>Sign in to continue using this site</h4> */}
 
       <div className="form-container">
@@ -88,7 +99,7 @@ const Login = () => {
           </div>
         </form>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

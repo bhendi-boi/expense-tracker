@@ -8,6 +8,7 @@ import { DarkThemeContext } from "../context/DarkThemeContext";
 // styles
 // import "../styles/test.css";
 import "../styles/Home.css";
+import { motion } from "framer-motion";
 
 const Home = () => {
   // darkmode prop
@@ -15,7 +16,12 @@ const Home = () => {
   const { currentUser } = useContext(AuthContext);
 
   return (
-    <div className={"home" + (darkMode ? " dark-home" : "")}>
+    <motion.div
+      initial={{ width: 0 }}
+      animate={{ width: "100vw" }}
+      exit={{ x: "100vw", transistion: { duration: 0.2 } }}
+      className={"home" + (darkMode ? " dark-home" : "")}
+    >
       {!currentUser ? (
         <section className="not-signed-in">
           <h1>You are currently not logged in!!</h1>
@@ -37,7 +43,7 @@ const Home = () => {
           </p>
         </section>
       )}
-    </div>
+    </motion.div>
   );
 };
 
