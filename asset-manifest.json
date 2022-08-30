@@ -1,13 +1,14 @@
 {
   "files": {
-    "main.css": "/static/css/main.d3e69a33.css",
-    "main.js": "/static/js/main.c97b26f0.js",
+    "main.css": "/static/css/main.64b511a4.css",
+    "main.js": "/static/js/main.06081c4f.js",
+    "static/media/IVPR4348.jpg": "/static/media/IVPR4348.8d9bfa09f4fed83a396f.jpg",
     "index.html": "/index.html",
-    "main.d3e69a33.css.map": "/static/css/main.d3e69a33.css.map",
-    "main.c97b26f0.js.map": "/static/js/main.c97b26f0.js.map"
+    "main.64b511a4.css.map": "/static/css/main.64b511a4.css.map",
+    "main.06081c4f.js.map": "/static/js/main.06081c4f.js.map"
   },
   "entrypoints": [
-    "static/css/main.d3e69a33.css",
-    "static/js/main.c97b26f0.js"
+    "static/css/main.64b511a4.css",
+    "static/js/main.06081c4f.js"
   ]
 }
