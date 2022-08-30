@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation, Navigate } from "react-router-dom";
 
 // pages
 import Home from "../pages/Home";
@@ -37,6 +37,7 @@ const AnimatedRoutes = () => {
             </ProtectedRoute>
           }
         />
+        <Route path="/expense-tracker" element={<Navigate to="/" />} />
 
         <Route path="*" element={<Error />}></Route>
       </Routes>
