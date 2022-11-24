@@ -12,34 +12,39 @@ const Footer = () => {
   const { darkMode } = useContext(DarkThemeContext);
   const currentYear = new Date().getFullYear();
 
+  const socialMediaLinks = [
+    {
+      link: "https://github.com/bhendi-boi",
+      component: <VscGithub />,
+    },
+    {
+      link: "https://www.linkedin.com/in/jyothikrishna-sajja-96bb45226/",
+      component: <ImLinkedin2 />,
+    },
+
+    {
+      link: "https://instagram.com/kittusjk/",
+      component: <BsInstagram />,
+    },
+  ];
+
   return (
     <footer className={darkMode ? "footer dark-footer" : "footer"}>
       <div className="contact-me">
         <div className="icons">
-          <motion.a
-            whileHover={{ scale: 1.04 }}
-            whileTap={{ scale: 0.96 }}
-            animate={{ duration: 2 }}
-            href="https://github.com/bhendi-boi"
-          >
-            <VscGithub className="icon" />
-          </motion.a>
-          <motion.a
-            whileHover={{ scale: 1.04 }}
-            whileTap={{ scale: 0.96 }}
-            animate={{ duration: 2 }}
-            href="https://www.linkedin.com/in/jyothikrishna-sajja-96bb45226/"
-          >
-            <ImLinkedin2 className="icon" />
-          </motion.a>
-          <motion.a
-            whileHover={{ scale: 1.04 }}
-            whileTap={{ scale: 0.96 }}
-            animate={{ duration: 2 }}
-            href="https://instagram.com/kittusjk/"
-          >
-            <BsInstagram className="icon" />
-          </motion.a>
+          {socialMediaLinks.map((mediaLink) => {
+            return (
+              <motion.a
+                whileTap={{ scale: 0.96 }}
+                whileHover={{ scale: 1.04 }}
+                transition={{ duration: 0.1 }}
+                href={mediaLink.link}
+                key={mediaLink.link}
+              >
+                {mediaLink.component}
+              </motion.a>
+            );
+          })}
         </div>
         <h3>© {currentYear} bhendi-boi</h3>
       </div>

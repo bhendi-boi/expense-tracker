@@ -1,6 +1,86 @@
 /* edit-profile */
 
 .edit-profile {
-    height: calc(100vh -50px);
-    width: 100vw;
+  --background-color: #f3f4f5;
+}
+
+.edit-profile-wrapper {
+  height: 100%;
+  width: 100%;
+  /* background-color: gray; */
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  /* z-index: 1; */
+}
+
+.edit-profile {
+  display: flex;
+  width: 400px;
+  height: 300px;
+  flex-flow: column wrap;
+  border: 2px solid red;
+  border-radius: 1rem;
+  background-color: var(--background-color);
+}
+
+.edit-profile .header {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.edit-profile .header > * {
+  margin: 0.5rem 1rem 0 1rem;
+  font-size: 1.5rem;
+}
+
+.edit-profile .header button {
+  border: none;
+  cursor: pointer;
+}
+
+.edit-profile form {
+  display: flex;
+  flex-flow: column wrap;
+}
+
+.edit-profile form .inputs {
+  display: flex;
+  flex-flow: column wrap;
+}
+
+.edit-profile form .inputs > * {
+  margin: 0 1.5rem 0 1.5rem;
+}
+
+.edit-profile form .inputs input {
+  border-radius: 0.3rem;
+  border: 2px solid #111;
+  padding: 0.2rem;
+}
+
+.edit-profile form .submit {
+  display: flex;
+  width: 100%;
+  height: 50px;
+  flex-flow: row;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.edit-profile form .submit button {
+  width: 8rem;
+  cursor: pointer;
+  font-size: 1.3rem;
+  color: #f3f4f5;
+}
+
+.edit-profile form .submit .yes-button {
+  background-color: green;
+}
+.edit-profile form .submit .no-button {
+  background-color: red;
 }
