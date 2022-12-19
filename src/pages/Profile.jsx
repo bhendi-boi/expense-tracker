@@ -2,7 +2,6 @@ import React, { useContext, useState } from "react";
 import EditProfile from "../components/EditProfile";
 
 // context
-import { DarkThemeContext } from "../context/DarkThemeContext";
 import dummy from "../assets/IVPR4348.jpg";
 
 // styles

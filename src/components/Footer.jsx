@@ -1,5 +1,4 @@
-import React, { useContext } from "react";
-import { DarkThemeContext } from "../context/DarkThemeContext";
+import { useContext } from "react";
 // styles
 import { VscGithub } from "react-icons/vsc";
 import { ImLinkedin2 } from "react-icons/im";
@@ -8,7 +7,6 @@ import { motion } from "framer-motion";
 
 // main jsx
 const Footer = () => {
-  const { darkMode } = useContext(DarkThemeContext);
   const currentYear = new Date().getFullYear();
 
   const socialMediaLinks = [

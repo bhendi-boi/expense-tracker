@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import SVG404 from "../assets/404-error.svg";
 // context
 import { AuthContext } from "../context/AuthContext";
-import { DarkThemeContext } from "../context/DarkThemeContext";
 
 // styles
 

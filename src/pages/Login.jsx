@@ -1,8 +1,7 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 // context
-import { DarkThemeContext } from "../context/DarkThemeContext";
 import { AuthContext } from "../context/AuthContext";
 
 // css imports
@@ -10,7 +9,6 @@ import { motion } from "framer-motion";
 
 const Login = () => {
   // post function
-  const { darkMode } = useContext(DarkThemeContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -49,8 +47,6 @@ const Login = () => {
     }
     setLoading(false);
   };
-  console.log(currentUser);
-
   return (
     <motion.div
       initial={{ opacity: 0 }}
