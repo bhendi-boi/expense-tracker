@@ -17,7 +17,6 @@ import { AuthContext } from "../context/AuthContext";
 
 // styles
 import { motion } from "framer-motion";
-import "../styles/Signup.css";
 
 const Signup = () => {
   // todo list
@@ -88,72 +87,91 @@ const Signup = () => {
       setConfirmPassword(e.target.value);
     }
   };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (validatePasswords()) {
+      handleSignIn(inputUser);
+    }
+  };
 
   return (
     <motion.div
       initial={{ width: 0 }}
-      animate={{ width: "100vw" }}
-      exit={{ x: window.innerWidth, transistion: { duration: 0.2 } }}
-      className={"create-account " + (darkMode ? "dark-create-account" : "")}
+      animate={{ width: "100%" }}
+      className="min-h-screen bg-background"
     >
-      <h1>
-        Hello, {currentUser ? `${currentUser}` : "user"} Welcome to bhendi's
-      </h1>
-      <h3>
-        {currentUser
-          ? "Since you are already logged in you can start accesing this site"
-          : "create an account by filling out the form below"}
-      </h3>
-      <div className="form-container">
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            if (validatePasswords()) {
-              handleSignIn(inputUser);
-            }
-          }}
-        >
-          <label htmlFor="email">Email</label>
+      <picture className="w-full h-48 bg-yellow-300">
+        <img src="" alt="" className="w-full h-full" />
+      </picture>
+      <form onSubmit={handleSubmit} className="px-4 py-2">
+        <span className="block mb-4 text-xl text-center">
+          Sign in by filling this form
+        </span>
+        <div className="flex flex-col gap-2 mb-4">
+          <label htmlFor="email" className="text-xl">
+            Email
+          </label>
           <input
             type="email"
             name="email"
-            placeholder="email"
+            id="email"
+            title="email"
+            placeholder="johndoe@gmail.com"
+            className="px-4 py-2 text-gray-700 rounded-md bg-zinc-200 focus:outline-none focus:bg-white focus:ring-2"
             value={inputUser.email}
             required={true}
             onChange={handleChange}
           />
-          <label htmlFor="password">Password</label>
+        </div>
+        <div className="flex flex-col gap-2 mb-4">
+          <label htmlFor="password" className="text-xl">
+            Password
+          </label>
           <input
             type="password"
             name="password"
+            id="password"
+            className="px-4 py-2 text-gray-700 rounded-md bg-zinc-200 focus:outline-none focus:bg-white focus:ring-2"
             value={inputUser.password}
             placeholder="password"
             onChange={handleChange}
           />
-          <label htmlFor="confirmpassword">Confirm password</label>
+        </div>
+        <div className="flex flex-col gap-2 mb-4">
+          <label htmlFor="confirmpassword" className="text-xl">
+            Confirm password
+          </label>
           <input
             type="password"
             name="confirmpassword"
+            id="confirmpassword"
+            className="px-4 py-2 text-gray-700 rounded-md bg-zinc-200 focus:outline-none focus:bg-white focus:ring-2"
             value={confirmPassword}
             placeholder="confirm password"
             onChange={handleChange}
           />
-          <div className="sign-in">
-            <h4>
-              already a
-              <Link to="/login">
-                <span>user</span>
-              </Link>
-              ?
-            </h4>
-            <button disabled={loading} type="submit" className="submit-button">
-              <motion.p whileTap={{ scale: 1.1 }} whileHover={{ scale: 0.9 }}>
-                Submit
-              </motion.p>
-            </button>
-          </div>
-        </form>
-      </div>
+        </div>
+        <div className="flex flex-col items-center gap-4 mb-4">
+          <motion.button
+            disabled={loading}
+            type="submit"
+            className="w-3/4 px-4 py-2 mx-auto font-medium rounded-md border-emerald-500 bg-emerald-500 text-slate-50"
+            whileTap={{ scale: 0.95 }}
+            whileHover={{ scale: 1.1 }}
+          >
+            Submit
+          </motion.button>
+          <span>
+            Already have an account?{" "}
+            <Link
+              to="/login"
+              className="text-blue-600 hover:underline hover:underline-offset-2"
+            >
+              Login
+            </Link>
+          </span>
+        </div>
+      </form>
     </motion.div>
   );
 };

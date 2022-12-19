@@ -37,8 +37,6 @@ const AnimatedRoutes = () => {
             </ProtectedRoute>
           }
         />
-        <Route path="/expense-tracker" element={<Navigate to="/" />} />
-
         <Route path="*" element={<Error />}></Route>
       </Routes>
     </AnimatePresence>

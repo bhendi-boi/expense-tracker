@@ -6,7 +6,6 @@ import { AuthContext } from "../context/AuthContext";
 import { UserDataContext } from "../context/UserDataContext";
 
 // styles
-import "../styles/EditProfile.css";
 import { motion } from "framer-motion";
 
 // main jsx

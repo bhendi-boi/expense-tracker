@@ -1,31 +1,48 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
-
+import SVG404 from "../assets/404-error.svg";
 // context
 import { AuthContext } from "../context/AuthContext";
 import { DarkThemeContext } from "../context/DarkThemeContext";
 
 // styles
-import "../styles/Error.css";
 
 const Error = () => {
-  const { darkMode } = useContext(DarkThemeContext);
   const { currentUser } = useContext(AuthContext);
-
-  const errorMessage = "Error 404 page not found. Try checking the URL";
   return (
-    <div className={"error " + (darkMode ? "dark-error" : "")}>
-      <h3 className="error-message">{errorMessage}</h3>
-
-      <div className={"main-content " + (darkMode ? "dark-main-content" : "")}>
+    <div className="min-h-screen text-center text-gray-700 bg-background">
+      <picture className="mb-6">
+        <img src={SVG404} alt="404 error" />
+      </picture>
+      <h2 className="mb-4 text-2xl">
+        Error 404 Page not found <br />
+        <span className="text-xl">
+          Try checking the URL and refreshing the page.
+        </span>
+      </h2>
+      <div className="">
         {currentUser ? (
-          <h3>
-            click <Link to="/profile">here</Link> to go to your profile
-          </h3>
+          <span className="text-xl">
+            Click{" "}
+            <Link
+              to="/profile"
+              className="font-medium text-blue-600 hover:underline underline-offset-2 focus-within:underline"
+            >
+              here
+            </Link>{" "}
+            to go to your profile
+          </span>
         ) : (
-          <h3>
-            click <Link to="/">here</Link> to visit home page
-          </h3>
+          <span className="text-xl">
+            Click{" "}
+            <Link
+              to="/"
+              className="font-medium text-blue-600 hover:underline underline-offset-2 focus-within:underline"
+            >
+              here
+            </Link>{" "}
+            to visit home page
+          </span>
         )}
       </div>
     </div>

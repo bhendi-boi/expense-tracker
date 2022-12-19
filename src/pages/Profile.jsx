@@ -3,12 +3,11 @@ import EditProfile from "../components/EditProfile";
 
 // context
 import { DarkThemeContext } from "../context/DarkThemeContext";
-import dummy from "../assests/IVPR4348.jpg";
+import dummy from "../assets/IVPR4348.jpg";
 
 // styles
 import { MdEdit } from "react-icons/md";
 import { motion } from "framer-motion";
-import "../styles/Profile.css";
 
 const Profile = () => {
   const { darkMode } = useContext(DarkThemeContext);

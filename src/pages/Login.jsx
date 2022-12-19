@@ -7,7 +7,6 @@ import { AuthContext } from "../context/AuthContext";
 
 // css imports
 import { motion } from "framer-motion";
-import "../styles/Login.css";
 
 const Login = () => {
   // post function
@@ -31,7 +30,14 @@ const Login = () => {
       navigate("/");
     }
   }, [currentUser]);
-
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("submitted");
+    if (email === "" || password === "") {
+      return;
+    }
+    post();
+  };
   const post = async () => {
     try {
       setLoading(true);
@@ -50,55 +56,65 @@ const Login = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 1 }}
-      className={"signin " + (darkMode ? "dark-signin" : "")}
+      className="min-h-screen bg-background"
     >
-      {/* <h4>Sign in to continue using this site</h4> */}
-
-      <div className="form-container">
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            console.log("submitted");
-            if (email === "" || password === "") {
-              return;
-            }
-            post();
-          }}
-        >
-          <label htmlFor="email">Email</label>
+      <picture className="w-full h-48 bg-yellow-300">
+        <img src="" alt="" className="w-full h-full" />
+      </picture>
+      <form onSubmit={handleSubmit} className="px-4 py-2 text-gray-800 h-1/2">
+        <span className="block w-full mb-4 text-xl text-center">
+          Login in to continue
+        </span>
+        <div className="flex flex-col gap-2 mb-4">
+          <label htmlFor="email" className="text-xl">
+            Email
+          </label>
           <input
             name="email"
+            id="email"
             type="text"
-            placeholder="email"
+            placeholder="johndoe@gmail.com"
+            className="px-4 py-2 text-gray-700 rounded-md bg-zinc-200 focus:outline-none focus:ring-2 focus:bg-white"
             onChange={handleChange}
             required={true}
             value={email}
           />
-          <label htmlFor="password">Password</label>
+        </div>
+        <div className="flex flex-col gap-2 mb-4">
+          <label htmlFor="password" className="text-xl">
+            Password
+          </label>
           <input
             name="password"
+            id="password"
             type="password"
             placeholder="password"
+            className="px-4 py-2 text-gray-700 rounded-md focus:ring-2 bg-zinc-200 focus:outline-none focus:bg-white"
             onChange={handleChange}
             required={true}
           />
-          <div className="submit-button">
-            <motion.button
-              disabled={loading}
-              type="submit"
-              whileTap={{ scale: 0.9 }}
-              whileHover={{ scale: 1.05 }}
+        </div>
+        <div className="flex flex-col items-center gap-4 ">
+          <motion.button
+            disabled={loading}
+            type="submit"
+            className="w-3/4 px-4 py-2 mx-auto font-medium text-white capitalize border-b-2 rounded-md border-slate-50 bg-emerald-500"
+            whileTap={{ scale: 0.9 }}
+            whileHover={{ scale: 1.1 }}
+          >
+            sign in
+          </motion.button>
+          <span className="">
+            Don't have an account ?{" "}
+            <Link
+              to="/signup"
+              className="text-blue-600 hover:underline hover:underline-offset-1"
             >
-              sign in
-            </motion.button>
-            <p>
-              don't have an account ? click
-              <Link to="/signup">here</Link>
-              to create one
-            </p>
-          </div>
-        </form>
-      </div>
+              Signup
+            </Link>{" "}
+          </span>
+        </div>
+      </form>
     </motion.div>
   );
 };
