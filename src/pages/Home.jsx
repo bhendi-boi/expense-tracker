@@ -1,9 +1,8 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 
 // context
 import { AuthContext } from "../context/AuthContext";
-import { DarkThemeContext } from "../context/DarkThemeContext";
 
 // styles
 import { motion } from "framer-motion";

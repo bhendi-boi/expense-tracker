@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 // firebase
@@ -12,7 +12,6 @@ import {
 } from "firebase/firestore";
 
 // context
-import { DarkThemeContext } from "../context/DarkThemeContext";
 import { AuthContext } from "../context/AuthContext";
 
 // styles
@@ -22,8 +21,6 @@ const Signup = () => {
   // todo list
   // 1 signin button
   // 2 complete the confirm password and posting function
-  // 3 darkMode
-  const { darkMode } = useContext(DarkThemeContext);
   const [inputUser, setinputUser] = useState({
     email: "",
     password: "",
