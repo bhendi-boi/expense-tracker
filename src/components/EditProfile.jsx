@@ -1,7 +1,6 @@
 import React, { useState, useContext } from "react";
 import ReactDOM from "react-dom";
 // context
-import { DarkThemeContext } from "../context/DarkThemeContext";
 import { AuthContext } from "../context/AuthContext";
 import { UserDataContext } from "../context/UserDataContext";
 

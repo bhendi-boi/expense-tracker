@@ -1,16 +1,20 @@
 import { useContext, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import { MdOutlineDarkMode, MdOutlineLightMode } from "react-icons/md";
-import { AiOutlineMenu } from "react-icons/ai";
+import {
+  MdOutlineDarkMode,
+  MdOutlineLightMode,
+  MdOutlineMenu,
+  MdClose,
+} from "react-icons/md";
 // context
-import { DarkThemeContext } from "../context/DarkThemeContext";
 import { AuthContext } from "../context/AuthContext";
+import useTheme from "../context/useTheme";
 
 // styles
 import { motion } from "framer-motion";
 const Navbar = () => {
   // context
-  const { darkMode, changeTheme } = useContext(DarkThemeContext);
+  const [darkMode, changeTheme] = useTheme();
   const { logOut, currentUser } = useContext(AuthContext);
   const navigate = useNavigate();
   const [visible, setVisible] = useState(false);
@@ -35,37 +39,38 @@ const Navbar = () => {
     setVisible((visible) => !visible);
   };
   return (
-    <nav className="sticky top-0 left-0 flex items-center justify-between w-full h-16 bg-white">
+    <nav className="sticky top-0 left-0 flex items-center justify-between w-full h-16 text-gray-900 bg-white dark:bg-dark-background dark:text-white">
       <div className="mx-4 logo">
         <NavLink to="/">
-          <h1 className="text-4xl capitalize">bhendi's</h1>
+          <h1 className="text-4xl font-bold capitalize">bhendi's</h1>
         </NavLink>
       </div>
-      <div className="flex gap-4">
+      <div className="flex items-center gap-4">
         <div className="">
-          {darkMode ? (
-            <MdOutlineDarkMode
-              size={30}
-              className="text-white"
-              onClick={changeTheme}
-            />
+          {darkMode === "dark" ? (
+            <MdOutlineDarkMode size={30} onClick={changeTheme} />
           ) : (
-            <MdOutlineLightMode
-              size={30}
-              className="text-black"
-              onClick={changeTheme}
-            />
+            <MdOutlineLightMode size={30} onClick={changeTheme} />
           )}
         </div>
-        <button>
-          <AiOutlineMenu size={30} className="mr-4" onClick={toggleVisible} />
-        </button>
+        {currentUser ? (
+          <button className="mr-4" onClick={toggleVisible}>
+            {!visible ? <MdOutlineMenu size={30} /> : <MdClose size={30} />}
+          </button>
+        ) : (
+          <button
+            onClick={handleSignIn}
+            className="px-4 py-2 mr-4 font-medium text-white bg-gray-900 rounded-sm hover:bg-transparent hover:text-gray-700 hover:outline dark:bg-white dark:text-gray-900 dark:hover:text-white dark:hover:bg-gray-900"
+          >
+            Login
+          </button>
+        )}
       </div>
       {/* <div className="relative w-full min-h-screen bg-transparent bg-neutral-600 bg-opacity-70"> */}
       <div
         className={
-          "absolute top-16 w-40 h-screen bg-white " +
-          (visible ? "right-0" : "-right-40")
+          "absolute top-16 w-40 h-[calc(100vh-4rem)] bg-white z-10 " +
+          (visible ? "right-0" : "hidden")
         }
       >
         <ul
